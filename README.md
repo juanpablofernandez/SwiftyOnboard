@@ -42,6 +42,15 @@ You can use [CocoaPods](http://cocoapods.org/) to install `SwiftyOnboard` by add
 use_frameworks!
 pod 'SwiftyOnboard'
 ```
+If you get the ``Unable to find a specification for `SwiftyOnboard`.``  error after running `pod install`.
+
+Run the following commands on your project directory:
+```
+pod repo update
+```
+```
+pod install
+```
 #### Manually
 1. Drag and drop ```SwiftyOnboard.swift``` ```SwiftyOnboardOverlay.swift``` ```SwiftyOnboardPage.swift``` in your project.  
 2. That's it!
@@ -88,7 +97,6 @@ extension ViewController: SwiftyOnboardDataSource {
 <!-- [Example project with CocoaPods](https://github.com/juanpablofernandez). -->
 
 ### Properties
---------------
 
 SwiftyOnboard has the following properties:
 ```swift
@@ -105,7 +113,6 @@ public var shouldSwipe: Bool
 Whether or not swiping is enabled [default = true].
 
 ### Methods
---------------
 
 SwiftyOnboard class has the following methods:
 ```swift
@@ -114,7 +121,6 @@ func goToPage(index: Int, animated: Bool)
 This method allows you to move to a certain page in the onboarding.
 
 ### Protocols
----------------
 
 The SwiftyOnboard follows the Apple convention for data-driven views by providing two protocol interfaces, SwiftyOnboardDataSource and SwiftyOnboardDelegate.
 #### SwiftyOnboardDataSource
