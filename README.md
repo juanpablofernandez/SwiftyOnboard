@@ -4,9 +4,7 @@
 [![Swift Version][swift-image]][swift-url]
 [![Build Status][travis-image]][travis-url]
 [![License][license-image]][license-url]
-<!-- [![Carthage compatible](https://img.shields.io/badge/Carthage-incompatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) -->
-[![CocoaPods](https://img.shields.io/cocoapods/v/SwiftyOnboard.svg)](https://cocoapods.org/pods/SwiftyOnboard)  
-[![Platform](https://img.shields.io/cocoapods/p/LFAlertController.svg?style=flat)](http://cocoapods.org/pods/LFAlertController)
+[![CocoaPods](https://img.shields.io/cocoapods/v/SwiftyOnboard.svg)](https://cocoapods.org/pods/SwiftyOnboard)[![Platform](https://img.shields.io/cocoapods/p/LFAlertController.svg?style=flat)](http://cocoapods.org/pods/LFAlertController)
 
 SwiftyOnboard makes it easy to add onboarding to any iOS application. SwiftyOnboard handles all of the logic behind the pagination of views, which allows you to quickly add a highly customizable onboarding to your app, all in a lightweight framework.
 
@@ -69,7 +67,6 @@ class ViewController: UIViewController {
             let swiftyOnboard = SwiftyOnboard(frame: view.frame)
             view.addSubview(swiftyOnboard)
             swiftyOnboard.dataSource = self
-            swiftyOnboard.delegate = self
         }
 }
 ```
@@ -84,11 +81,6 @@ extension ViewController: SwiftyOnboardDataSource {
         func swiftyOnboardPageForIndex(swiftyOnboard: SwiftyOnboard, index: Int) -> SwiftyOnboardPage? {
             let page = SwiftyOnboardPage()
             return page
-        }
-
-        func swiftyOnboardViewForOverlay(swiftyOnboard: SwiftyOnboard) -> SwiftyOnboardOverlay? {
-            let overlay = SwiftyOnboardOverlay()
-            return overlay
         }
 }
 ```
@@ -111,6 +103,10 @@ An object that supports the SwiftyOnboardDelegate protocol and can respond to Sw
 public var shouldSwipe: Bool
 ```
 Whether or not swiping is enabled [default = true].
+```swift
+public var fadePages: Bool
+```
+Whether or not pages will fade upon transition [default = true].
 
 ### Methods
 
@@ -156,6 +152,10 @@ This method is called whenever a page is shown, it holds the index to that page.
 func swiftyOnboard(swiftyOnboard: SwiftyOnboard, leftEdge position: Double)
 ```
 This method is called whenever the pages are scrolling, it holds the current distance between the left side of the screen and the left side of the first page.
+```swift
+func swiftyOnboard(swiftyOnboard: SwiftyOnboard, tapped index: Int)
+```
+This method is called whenever a page is tapped by the user, it holds the index of the tapped page.
 
 ## Notes
 * Carthage is not supported

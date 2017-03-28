@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class SwiftyOnboardPage: UIView {
+open class SwiftyOnboardPage: UIView {
     
     public var title: UILabel = {
         let label = UILabel()
@@ -45,8 +45,18 @@ public class SwiftyOnboardPage: UIView {
         setUp()
     }
     
+    func set(style: SwiftyOnboardStyle) {
+        switch style {
+        case .light:
+            title.textColor = .white
+            subTitle.textColor = .white
+        case .dark:
+            title.textColor = .black
+            subTitle.textColor = .black
+        }
+    }
+    
     func setUp() {
-        
         self.addSubview(imageView)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 30).isActive = true
@@ -67,7 +77,5 @@ public class SwiftyOnboardPage: UIView {
         subTitle.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -30).isActive = true
         subTitle.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 0).isActive = true
         subTitle.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        
     }
-    
 }
