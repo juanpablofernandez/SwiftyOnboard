@@ -4,13 +4,11 @@
 [![Swift Version][swift-image]][swift-url]
 [![Build Status][travis-image]][travis-url]
 [![License][license-image]][license-url]
-[![CocoaPods](https://img.shields.io/cocoapods/v/SwiftyOnboard.svg)](https://cocoapods.org/pods/SwiftyOnboard)
-[![Platform](https://img.shields.io/cocoapods/p/LFAlertController.svg?style=flat)](http://cocoapods.org/pods/LFAlertController)
+[![CocoaPods](https://img.shields.io/cocoapods/v/SwiftyOnboard.svg)](https://cocoapods.org/pods/SwiftyOnboard)[![Platform](https://img.shields.io/cocoapods/p/LFAlertController.svg?style=flat)](http://cocoapods.org/pods/LFAlertController)
 
 SwiftyOnboard makes it easy to add onboarding to any iOS application. SwiftyOnboard handles all of the logic behind the pagination of views, which allows you to quickly add a highly customizable onboarding to your app, all in a lightweight framework.
 
-![](screenshots/onboard1.gif)
-![](screenshots/onboard2.gif)
+![](screenshots/confess.gif)
 
 ## Contents
 

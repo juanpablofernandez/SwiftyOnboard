@@ -1,0 +1,12 @@
+PODS:
+  - SwiftyOnboard (1.1.1)
+
+DEPENDENCIES:
+  - SwiftyOnboard
+
+SPEC CHECKSUMS:
+  SwiftyOnboard: 33e088e8efabc844e4387942c259b53e5b428ec6
+
+PODFILE CHECKSUM: 79bb0b536df239d044c550ad3debbb51feb11053
+
+COCOAPODS: 1.1.1
