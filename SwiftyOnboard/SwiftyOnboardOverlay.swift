@@ -8,8 +8,17 @@
 
 import UIKit
 
+public protocol SwiftyOnboardOverlayDelegate{
+    
+    func onboardOverlay(_ onboardOverlay: SwiftyOnboardOverlay,didClickContinue button: UIButton)
+    
+    func onboardOverlay(_ onboardOverlay: SwiftyOnboardOverlay,didClickSkip button: UIButton)
+}
+
 open class SwiftyOnboardOverlay: UIView {
 
+    public var delegate: SwiftyOnboardOverlayDelegate?
+    
     public var pageControl: UIPageControl = {
         let pageControl = UIPageControl()
         pageControl.currentPage = 0
@@ -21,6 +30,7 @@ open class SwiftyOnboardOverlay: UIView {
         let button = UIButton(type: .system)
         button.setTitle("Continue", for: .normal)
         button.contentHorizontalAlignment = .center
+        button.addTarget(self, action: #selector(didClickContinue(sender:)), for: .touchUpInside)
         return button
     }()
     
@@ -28,6 +38,7 @@ open class SwiftyOnboardOverlay: UIView {
         let button = UIButton(type: .system)
         button.setTitle("Skip", for: .normal)
         button.contentHorizontalAlignment = .right
+        button.addTarget(self, action: #selector(didClickSkip(sender:)), for: .touchUpInside)
         return button
     }()
     
@@ -91,5 +102,13 @@ open class SwiftyOnboardOverlay: UIView {
         skipButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 40).isActive = true
         skipButton.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 10).isActive = true
         skipButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
+    }
+    
+    func didClickContinue(sender: UIButton){
+        delegate?.onboardOverlay(self, didClickContinue: sender)
+    }
+    
+    func didClickSkip(sender: UIButton){
+        delegate?.onboardOverlay(self, didClickSkip: sender)
     }
 }
