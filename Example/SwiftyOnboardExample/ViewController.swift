@@ -67,6 +67,9 @@ extension ViewController: SwiftyOnboardDelegate, SwiftyOnboardDataSource {
         view.title.font = UIFont(name: "Lato-Heavy", size: 22)
         view.subTitle.font = UIFont(name: "Lato-Regular", size: 16)
         
+        let colors:[UIColor] = [#colorLiteral(red: 0.9980840087, green: 0.3723873496, blue: 0.4952875376, alpha: 1),#colorLiteral(red: 0.2666860223, green: 0.5116362572, blue: 1, alpha: 1),#colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1)]
+        view.backgroundColor = colors[index]
+        
         if index == 0 {
             //On the first page, change the text in the labels to say the following:
             view.title.text = "Welcome to Confess!"

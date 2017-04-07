@@ -37,7 +37,7 @@ extension StoryboardExampleViewController: SwiftyOnboardDelegate, SwiftyOnboardD
             view?.subTitleLabel.text = "Earth, otherwise known as the World, is the third planet from the Sun."
         } else if index == 1 {
             //On the second page, change the text in the labels to say the following:
-            view?.titleLabel.text = "The mystery of outer space"
+            view?.titleLabel.text = "The mystery of\n outer space"
             view?.subTitleLabel.text = "Outer space or just space, is the void that exists between celestial bodies, including Earth."
         } else {
             //On the thrid page, change the text in the labels to say the following:
