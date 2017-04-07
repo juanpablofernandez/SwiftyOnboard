@@ -41,8 +41,6 @@ public protocol SwiftyOnboardDelegate: class {
     func swiftyOnboard(_ swiftyOnboard: SwiftyOnboard, currentPage index: Int)
     func swiftyOnboard(_ swiftyOnboard: SwiftyOnboard, leftEdge position: Double)
     func swiftyOnboard(_ swiftyOnboard: SwiftyOnboard, tapped index: Int)
-    func swiftyOnboard(_ swiftyOnboard: SwiftyOnboard, didClickContinue button: UIButton,atIndex index: Int)
-    func swiftyOnboard(_ swiftyOnboard: SwiftyOnboard, didClickSkip button: UIButton, atIndex index: Int)
     
 }
 
@@ -50,14 +48,6 @@ public extension SwiftyOnboardDelegate {
     func swiftyOnboard(_ swiftyOnboard: SwiftyOnboard, currentPage index: Int) {}
     func swiftyOnboard(_ swiftyOnboard: SwiftyOnboard, leftEdge position: Double) {}
     func swiftyOnboard(_ swiftyOnboard: SwiftyOnboard, tapped index: Int) {}
-    func swiftyOnboard(_ swiftyOnboard: SwiftyOnboard, didClickSkip button: UIButton, atIndex index: Int){}
-    func swiftyOnboard(_ swiftyOnboard: SwiftyOnboard, didClickContinue button: UIButton,atIndex index: Int){
-        if let count = swiftyOnboard.dataSource?.swiftyOnboardNumberOfPages(swiftyOnboard){
-            if index < count - 1{
-                swiftyOnboard.goToPage(index: index + 1, animated: true)
-            }
-        }
-    }
 }
 
 public class SwiftyOnboard: UIView, UIScrollViewDelegate {
@@ -267,17 +257,6 @@ public class SwiftyOnboard: UIView, UIScrollViewDelegate {
             let index = CGFloat(index)
             containerView.setContentOffset(CGPoint(x: index * self.frame.width, y: 0), animated: animated)
         }
-    }
-}
-
-extension SwiftyOnboard: SwiftyOnboardOverlayDelegate{
-    
-    public func onboardOverlay(_ onboardOverlay: SwiftyOnboardOverlay, didClickSkip button: UIButton) {
-        self.delegate?.swiftyOnboard(self, didClickSkip: button, atIndex: currentPage)
-    }
-    
-    public func onboardOverlay(_ onboardOverlay: SwiftyOnboardOverlay, didClickContinue button: UIButton) {
-        self.delegate?.swiftyOnboard(self, didClickContinue: button, atIndex: currentPage)
     }
 }
 
