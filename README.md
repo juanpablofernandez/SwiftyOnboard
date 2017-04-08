@@ -143,6 +143,10 @@ Return an overlay (view) to be displayed on top of the onboarding pages. e.g. [T
 func swiftyOnboardOverlayForPosition(swiftyOnboard: SwiftyOnboard, overlay: SwiftyOnboardOverlay, for position: Double)
 ```
 Edit the overlay (view) for the desired position. e.g. [Change the "continue button" text to "Done", when the last page is reached]
+```swift
+func swiftyOnboardBackgroundColorFor(_ swiftyOnboard: SwiftyOnboard, atIndex index: Int) -> UIColor?
+```
+Set the background color for the page at the given index. (Very useful when you have pages with different background colors)
 
 #### SwiftyOnboardDelegate
 SwiftyOnboardDelegate protocol has the following methods:
@@ -164,6 +168,11 @@ This method is called whenever a page is tapped by the user, it holds the index 
 * Landscape mode is not supported
 
 ## Contribute
+Contributions are welcomed! There are however certain guidelines you must follow when you contribute:
+* Have descriptive commit messages.
+* Make a pull request for every feature (Don't make a pull request that adds 3 new features. Make an individual pull request for each of those features, with a descriptive message).
+* Don't update the example project, or any other irrelevant files.
+
 I want to see your amazing onboarding. Take screenshots and/or record a gif and send it my way!
 
 ## License

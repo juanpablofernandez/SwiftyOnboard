@@ -10,7 +10,7 @@ import UIKit
 
 public protocol SwiftyOnboardDataSource: class {
     
-    func swiftyOnboardBackgroundColorFor(_ swiftyOnboard: SwiftyOnboard,atIndex index: Int)->UIColor?
+    func swiftyOnboardBackgroundColorFor(_ swiftyOnboard: SwiftyOnboard, atIndex index: Int) -> UIColor?
     func swiftyOnboardNumberOfPages(_ swiftyOnboard: SwiftyOnboard) -> Int
     func swiftyOnboardViewForBackground(_ swiftyOnboard: SwiftyOnboard) -> UIView?
     func swiftyOnboardPageForIndex(_ swiftyOnboard: SwiftyOnboard, index: Int) -> SwiftyOnboardPage?
