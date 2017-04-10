@@ -9,22 +9,22 @@
 import UIKit
 
 open class SwiftyOnboardOverlay: UIView {
-
-    public var pageControl: UIPageControl = {
+    
+    open var pageControl: UIPageControl = {
         let pageControl = UIPageControl()
         pageControl.currentPage = 0
         pageControl.pageIndicatorTintColor = UIColor.lightGray
         return pageControl
     }()
     
-    public var continueButton: UIButton = {
+    open var continueButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Continue", for: .normal)
         button.contentHorizontalAlignment = .center
         return button
     }()
     
-    public var skipButton: UIButton = {
+    open var skipButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Skip", for: .normal)
         button.contentHorizontalAlignment = .right
@@ -49,7 +49,7 @@ open class SwiftyOnboardOverlay: UIView {
         return false
     }
     
-    func set(style: SwiftyOnboardStyle) {
+    open func set(style: SwiftyOnboardStyle) {
         switch style {
         case .light:
             continueButton.setTitleColor(.white, for: .normal)
@@ -62,11 +62,11 @@ open class SwiftyOnboardOverlay: UIView {
         }
     }
     
-    public func page(count: Int) {
+    open func page(count: Int) {
         pageControl.numberOfPages = count
     }
     
-    public func currentPage(index: Int) {
+    open func currentPage(index: Int) {
         pageControl.currentPage = index
     }
     
@@ -92,4 +92,5 @@ open class SwiftyOnboardOverlay: UIView {
         skipButton.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 10).isActive = true
         skipButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
     }
+    
 }

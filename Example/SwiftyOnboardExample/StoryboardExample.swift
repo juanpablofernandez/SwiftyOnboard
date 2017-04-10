@@ -24,11 +24,11 @@ class StoryboardExampleViewController: UIViewController {
 
 extension StoryboardExampleViewController: SwiftyOnboardDelegate, SwiftyOnboardDataSource {
     
-    func swiftyOnboardNumberOfPages(swiftyOnboard: SwiftyOnboard) -> Int {
+    func swiftyOnboardNumberOfPages(_ swiftyOnboard: SwiftyOnboard) -> Int {
         return 3
     }
     
-    func swiftyOnboardPageForIndex(swiftyOnboard: SwiftyOnboard, index: Int) -> SwiftyOnboardPage? {
+    func swiftyOnboardPageForIndex(_ swiftyOnboard: SwiftyOnboard, index: Int) -> SwiftyOnboardPage? {
         let view = CustomPage.instanceFromNib() as? CustomPage
         view?.image.image = UIImage(named: "space\(index).png")
         if index == 0 {
@@ -47,16 +47,16 @@ extension StoryboardExampleViewController: SwiftyOnboardDelegate, SwiftyOnboardD
         return view
     }
     
-    func swiftyOnboardViewForOverlay(swiftyOnboard: SwiftyOnboard) -> SwiftyOnboardOverlay? {
+    func swiftyOnboardViewForOverlay(_ swiftyOnboard: SwiftyOnboard) -> SwiftyOnboardOverlay? {
         let overlay = CustomOverlay.instanceFromNib() as? CustomOverlay
         return overlay
     }
     
-    func swiftyOnboardOverlayForPosition(swiftyOnboard: SwiftyOnboard, overlay: SwiftyOnboardOverlay, for position: Double) {
+    func swiftyOnboardOverlayForPosition(_ swiftyOnboard: SwiftyOnboard, overlay: SwiftyOnboardOverlay, for position: Double) {
         let overlay = overlay as! CustomOverlay
         let currentPage = round(position)
         overlay.pageControl.currentPage = Int(currentPage)
-//        overlay.pageControl.currentPageIndicatorTintColor = .white
+        //        overlay.pageControl.currentPageIndicatorTintColor = .white
         
         if currentPage == 0.0 || currentPage == 1.0 {
             overlay.buttonContinue.setTitle("Continue", for: .normal)

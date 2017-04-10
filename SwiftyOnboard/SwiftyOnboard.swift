@@ -79,8 +79,8 @@ public class SwiftyOnboard: UIView, UIScrollViewDelegate {
     fileprivate var pageCount = 0
     fileprivate var overlay: SwiftyOnboardOverlay?
     fileprivate var pages = [SwiftyOnboardPage]()
-    fileprivate var style: SwiftyOnboardStyle = .dark
     
+    open var style: SwiftyOnboardStyle = .dark
     open var shouldSwipe: Bool = true
     open var fadePages: Bool = true
     

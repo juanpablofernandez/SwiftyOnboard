@@ -12,6 +12,9 @@ import SwiftyOnboard
 class ViewController: UIViewController {
     
     var swiftyOnboard: SwiftyOnboard!
+    let colors:[UIColor] = [#colorLiteral(red: 0.9980840087, green: 0.3723873496, blue: 0.4952875376, alpha: 1),#colorLiteral(red: 0.2666860223, green: 0.5116362572, blue: 1, alpha: 1),#colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1)]
+    var titleArray: [String] = ["Welcome to Confess!", "It’s completely anonymous", "Say something positive"]
+    var subTitleArray: [String] = ["Confess lets you anonymously\n send confessions to your friends\n and receive confessions from them.", "All confessions sent are\n anonymous. Your friends will only\n know that it came from one of\n their facebook friends.", "Be nice to your friends.\n Send them confessions that\n will make them smile :)"]
     
     var gradiant: CAGradientLayer = {
         //Gradiant for the background view
@@ -52,12 +55,17 @@ class ViewController: UIViewController {
 
 extension ViewController: SwiftyOnboardDelegate, SwiftyOnboardDataSource {
     
-    func swiftyOnboardNumberOfPages(swiftyOnboard: SwiftyOnboard) -> Int {
+    func swiftyOnboardNumberOfPages(_ swiftyOnboard: SwiftyOnboard) -> Int {
         //Number of pages in the onboarding:
         return 3
     }
     
-    func swiftyOnboardPageForIndex(swiftyOnboard: SwiftyOnboard, index: Int) -> SwiftyOnboardPage? {
+    func swiftyOnboardBackgroundColorFor(_ swiftyOnboard: SwiftyOnboard, atIndex index: Int) -> UIColor? {
+        //Return the background color for the page at index:
+        return colors[index]
+    }
+    
+    func swiftyOnboardPageForIndex(_ swiftyOnboard: SwiftyOnboard, index: Int) -> SwiftyOnboardPage? {
         let view = SwiftyOnboardPage()
         
         //Set the image on the page:
@@ -67,33 +75,22 @@ extension ViewController: SwiftyOnboardDelegate, SwiftyOnboardDataSource {
         view.title.font = UIFont(name: "Lato-Heavy", size: 22)
         view.subTitle.font = UIFont(name: "Lato-Regular", size: 16)
         
-        let colors:[UIColor] = [#colorLiteral(red: 0.9980840087, green: 0.3723873496, blue: 0.4952875376, alpha: 1),#colorLiteral(red: 0.2666860223, green: 0.5116362572, blue: 1, alpha: 1),#colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1)]
-        view.backgroundColor = colors[index]
-        
-        if index == 0 {
-            //On the first page, change the text in the labels to say the following:
-            view.title.text = "Welcome to Confess!"
-            view.subTitle.text = "Confess lets you anonymously\n send confessions to your friends\n and receive confessions from them."
-        } else if index == 1 {
-            //On the second page, change the text in the labels to say the following:
-            view.title.text = "It’s completely anonymous"
-            view.subTitle.text = "All confessions sent are\n anonymous. Your friends will only\n know that it came from one of\n their facebook friends."
-        } else {
-            //On the thrid page, change the text in the labels to say the following:
-            view.title.text = "Say something positive"
-            view.subTitle.text = "Be nice to your friends.\n Send them confessions that\n will make them smile :)"
-        }
+        //Set the text in the page:
+        view.title.text = titleArray[index]
+        view.subTitle.text = subTitleArray[index]
         
         //Return the page for the given index:
         return view
     }
     
-    func swiftyOnboardViewForOverlay(swiftyOnboard: SwiftyOnboard) -> SwiftyOnboardOverlay? {
+    func swiftyOnboardViewForOverlay(_ swiftyOnboard: SwiftyOnboard) -> SwiftyOnboardOverlay? {
         let overlay = SwiftyOnboardOverlay()
         
         //Setup targets for the buttons on the overlay view:
         overlay.skipButton.addTarget(self, action: #selector(handleSkip), for: .touchUpInside)
         overlay.continueButton.addTarget(self, action: #selector(handleContinue), for: .touchUpInside)
+        
+        //Setup for the overlay buttons:
         overlay.continueButton.titleLabel?.font = UIFont(name: "Lato-Bold", size: 16)
         overlay.continueButton.setTitleColor(UIColor.white, for: .normal)
         overlay.skipButton.setTitleColor(UIColor.white, for: .normal)
@@ -103,7 +100,7 @@ extension ViewController: SwiftyOnboardDelegate, SwiftyOnboardDataSource {
         return overlay
     }
     
-    func swiftyOnboardOverlayForPosition(swiftyOnboard: SwiftyOnboard, overlay: SwiftyOnboardOverlay, for position: Double) {
+    func swiftyOnboardOverlayForPosition(_ swiftyOnboard: SwiftyOnboard, overlay: SwiftyOnboardOverlay, for position: Double) {
         let currentPage = round(position)
         overlay.continueButton.tag = Int(position)
         
