@@ -61,7 +61,7 @@ public class SwiftyOnboard: UIView, UIScrollViewDelegate {
         }
     }
     
-    open var delegate: SwiftyOnboardDelegate?
+    open weak var delegate: SwiftyOnboardDelegate?
     
     fileprivate var containerView: UIScrollView = {
         let scrollView = UIScrollView()

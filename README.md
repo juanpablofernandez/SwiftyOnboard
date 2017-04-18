@@ -5,6 +5,7 @@
 [![Build Status][travis-image]][travis-url]
 [![License][license-image]][license-url]
 [![CocoaPods](https://img.shields.io/cocoapods/v/SwiftyOnboard.svg)](https://cocoapods.org/pods/SwiftyOnboard)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Platform](https://img.shields.io/cocoapods/p/LFAlertController.svg?style=flat)](http://cocoapods.org/pods/LFAlertController)
 
 SwiftyOnboard makes it easy to add onboarding to any iOS application. SwiftyOnboard handles all of the logic behind the pagination of views, which allows you to quickly add a highly customizable onboarding to your app, all in a lightweight framework.
@@ -36,7 +37,7 @@ SwiftyOnboard makes it easy to add onboarding to any iOS application. SwiftyOnbo
 ## Installation
 
 #### CocoaPods
-You can use [CocoaPods](http://cocoapods.org/) to install `SwiftyOnboard` by adding it to your `Podfile`:
+You can use [CocoaPods](http://cocoapods.org/) to install `SwiftyOnboard` by adding this to your `Podfile`:
 
 ```ruby
 use_frameworks!
@@ -50,6 +51,11 @@ pod repo update
 ```
 ```
 pod install
+```
+#### Carthage
+To install via Carthage add this to your Cartfile:
+```ruby
+github "juanpablofernandez/SwiftyOnboard"
 ```
 #### Manually
 1. Drag and drop ```SwiftyOnboard.swift``` ```SwiftyOnboardOverlay.swift``` ```SwiftyOnboardPage.swift``` in your project.  
@@ -164,7 +170,6 @@ func swiftyOnboard(swiftyOnboard: SwiftyOnboard, tapped index: Int)
 This method is called whenever a page is tapped by the user, it holds the index of the tapped page.
 
 ## Notes
-* Carthage is not supported
 * Landscape mode is not supported
 
 ## Contribute
