@@ -20,6 +20,15 @@ class StoryboardExampleViewController: UIViewController {
         swiftyOnboard.dataSource = self
         swiftyOnboard.backgroundColor = UIColor(red: 46/256, green: 46/256, blue: 76/256, alpha: 1)
     }
+    
+    func handleSkip() {
+        swiftyOnboard?.goToPage(index: 2, animated: true)
+    }
+    
+    func handleContinue(sender: UIButton) {
+        let index = sender.tag
+        swiftyOnboard?.goToPage(index: index + 1, animated: true)
+    }
 }
 
 extension StoryboardExampleViewController: SwiftyOnboardDelegate, SwiftyOnboardDataSource {
@@ -49,6 +58,8 @@ extension StoryboardExampleViewController: SwiftyOnboardDelegate, SwiftyOnboardD
     
     func swiftyOnboardViewForOverlay(_ swiftyOnboard: SwiftyOnboard) -> SwiftyOnboardOverlay? {
         let overlay = CustomOverlay.instanceFromNib() as? CustomOverlay
+        overlay?.skip.addTarget(self, action: #selector(handleSkip), for: .touchUpInside)
+        overlay?.buttonContinue.addTarget(self, action: #selector(handleContinue), for: .touchUpInside)
         return overlay
     }
     
@@ -56,8 +67,7 @@ extension StoryboardExampleViewController: SwiftyOnboardDelegate, SwiftyOnboardD
         let overlay = overlay as! CustomOverlay
         let currentPage = round(position)
         overlay.pageControl.currentPage = Int(currentPage)
-        //        overlay.pageControl.currentPageIndicatorTintColor = .white
-        
+        overlay.buttonContinue.tag = Int(position)
         if currentPage == 0.0 || currentPage == 1.0 {
             overlay.buttonContinue.setTitle("Continue", for: .normal)
             overlay.skip.setTitle("Skip", for: .normal)
