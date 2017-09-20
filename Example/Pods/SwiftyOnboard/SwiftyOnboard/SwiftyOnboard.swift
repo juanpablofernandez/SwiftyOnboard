@@ -155,6 +155,7 @@ public class SwiftyOnboard: UIView, UIScrollViewDelegate {
                 let viewFrame = CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height)
                 overlay.frame = viewFrame
                 self.overlay = overlay
+                self.overlay?.pageControl.addTarget(self, action: #selector(didTapPageControl), for: .allTouchEvents)
             }
         }
     }
@@ -224,6 +225,12 @@ public class SwiftyOnboard: UIView, UIScrollViewDelegate {
 //        if currentPage < pages.count - 1 {
 //            pages[currentPage + 1].alpha = sidePagesAlpha
 //        }
+    }
+    
+    open func didTapPageControl(_ sender: Any) {
+        let pager = sender as! UIPageControl
+        let page = pager.currentPage
+        self.goToPage(index: page, animated: true)
     }
     
     open var currentPage: Int{
