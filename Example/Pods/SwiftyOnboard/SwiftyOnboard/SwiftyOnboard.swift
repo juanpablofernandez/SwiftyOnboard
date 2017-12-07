@@ -205,26 +205,12 @@ public class SwiftyOnboard: UIView, UIScrollViewDelegate {
                                   color2.cgColor.components![2],
                                   precent),
                        alpha: 1)
-        
     }
     
     fileprivate func fadePageTransitions(containerView: UIScrollView, currentPage: Int) {
-        //Shorter Solution:
         for (index,page) in pages.enumerated() {
             page.alpha = 1 - abs(abs(containerView.contentOffset.x) - page.frame.width * CGFloat(index)) / page.frame.width
         }
-
-//        let diffFromCenter: CGFloat = abs(containerView.contentOffset.x - (CGFloat(currentPage)) * self.frame.size.width)
-//        let currentPageAlpha: CGFloat = 1.0 - diffFromCenter / self.frame.size.width
-//        let sidePagesAlpha: CGFloat = diffFromCenter / self.frame.size.width
-//        //NSLog(@"%f",currentPageAlpha);
-//        pages[currentPage].alpha = currentPageAlpha
-//        if currentPage > 0 {
-//            pages[currentPage - 1].alpha = sidePagesAlpha
-//        }
-//        if currentPage < pages.count - 1 {
-//            pages[currentPage + 1].alpha = sidePagesAlpha
-//        }
     }
     
     open func didTapPageControl(_ sender: Any) {

@@ -1,11 +1,11 @@
 PODS:
-  - SwiftyOnboard (1.3.2)
+  - SwiftyOnboard (1.3.4)
 
 DEPENDENCIES:
   - SwiftyOnboard
 
 SPEC CHECKSUMS:
-  SwiftyOnboard: 277a5005548548d20bca41f26b3ba366bd119b3b
+  SwiftyOnboard: 05d2fd80cbedc43b62d190e45b94455f73bda226
 
 PODFILE CHECKSUM: 79bb0b536df239d044c550ad3debbb51feb11053
 
