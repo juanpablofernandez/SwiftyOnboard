@@ -58,23 +58,25 @@ open class SwiftyOnboardPage: UIView {
     
     func setUp() {
         self.addSubview(imageView)
+        
+        let margin = self.layoutMarginsGuide
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 30).isActive = true
-        imageView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -30).isActive = true
-        imageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 10).isActive = true
-        imageView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.5).isActive = true
+        imageView.leftAnchor.constraint(equalTo: margin.leftAnchor, constant: 30).isActive = true
+        imageView.rightAnchor.constraint(equalTo: margin.rightAnchor, constant: -30).isActive = true
+        imageView.topAnchor.constraint(equalTo: margin.topAnchor, constant: 10).isActive = true
+        imageView.heightAnchor.constraint(equalTo: margin.heightAnchor, multiplier: 0.5).isActive = true
         
         self.addSubview(title)
         title.translatesAutoresizingMaskIntoConstraints = false
-        title.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 30).isActive = true
-        title.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -30).isActive = true
+        title.leftAnchor.constraint(equalTo: margin.leftAnchor, constant: 30).isActive = true
+        title.rightAnchor.constraint(equalTo: margin.rightAnchor, constant: -30).isActive = true
         title.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 10).isActive = true
         title.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
         self.addSubview(subTitle)
         subTitle.translatesAutoresizingMaskIntoConstraints = false
-        subTitle.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 30).isActive = true
-        subTitle.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -30).isActive = true
+        subTitle.leftAnchor.constraint(equalTo: margin.leftAnchor, constant: 30).isActive = true
+        subTitle.rightAnchor.constraint(equalTo: margin.rightAnchor, constant: -30).isActive = true
         subTitle.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 0).isActive = true
         subTitle.heightAnchor.constraint(equalToConstant: 100).isActive = true
     }

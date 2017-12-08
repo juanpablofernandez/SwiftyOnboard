@@ -160,7 +160,7 @@ public class SwiftyOnboard: UIView, UIScrollViewDelegate {
         }
     }
     
-    internal func tappedPage() {
+    @objc internal func tappedPage() {
         let currentpage = Int(getCurrentPosition())
         self.delegate?.swiftyOnboard(self, tapped: currentpage)
     }
@@ -173,9 +173,9 @@ public class SwiftyOnboard: UIView, UIScrollViewDelegate {
     }
     
     fileprivate func colorForPosition(_ pos: CGFloat)->UIColor?{
-        let precentage: CGFloat = pos - CGFloat(Int(pos))
+        let percentage: CGFloat = pos - CGFloat(Int(pos))
         
-        let currentIndex = Int(pos - precentage)
+        let currentIndex = Int(pos - percentage)
         
         if currentIndex < pageCount - 1{
             let color1 = dataSource?.swiftyOnboardBackgroundColorFor(self, atIndex: currentIndex)
@@ -183,27 +183,27 @@ public class SwiftyOnboard: UIView, UIScrollViewDelegate {
             
             if let color1 = color1,
                 let color2 = color2{
-                return colorFrom(start: color1, end: color2, precent: Float(precentage))
+                return colorFrom(start: color1, end: color2, percent: percentage)
             }
         }
         return nil
     }
     
-    fileprivate func colorFrom(start color1: UIColor, end color2: UIColor, precent: Float)->UIColor{
-        func cofd(_ color1: CGFloat,_ color2: CGFloat,_ precent: Float)-> Float{
-            let c1 = Float(color1)
-            let c2 = Float(color2)
-            return (c1 + ((c2 - c1) * precent))
+    fileprivate func colorFrom(start color1: UIColor, end color2: UIColor, percent: CGFloat)->UIColor{
+        func cofd(_ color1: CGFloat,_ color2: CGFloat,_ percent: CGFloat)-> CGFloat{
+            let c1 = CGFloat(color1)
+            let c2 = CGFloat(color2)
+            return (c1 + ((c2 - c1) * percent))
         }
-        return UIColor(colorLiteralRed: cofd(color1.cgColor.components![0],
-                                             color2.cgColor.components![0],
-                                             precent),
+        return UIColor(red: cofd(color1.cgColor.components![0],
+                                 color2.cgColor.components![0],
+                                 percent),
                        green: cofd(color1.cgColor.components![1],
                                    color2.cgColor.components![1],
-                                   precent),
+                                   percent),
                        blue: cofd(color1.cgColor.components![2],
                                   color2.cgColor.components![2],
-                                  precent),
+                                  percent),
                        alpha: 1)
     }
     
@@ -213,7 +213,7 @@ public class SwiftyOnboard: UIView, UIScrollViewDelegate {
         }
     }
     
-    open func didTapPageControl(_ sender: Any) {
+    @objc open func didTapPageControl(_ sender: Any) {
         let pager = sender as! UIPageControl
         let page = pager.currentPage
         self.goToPage(index: page, animated: true)
