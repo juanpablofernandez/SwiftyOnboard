@@ -112,7 +112,13 @@ public class SwiftyOnboard: UIView, UIScrollViewDelegate {
     
     fileprivate func setUpContainerView() {
         self.addSubview(containerView)
-        self.containerView.frame = self.frame
+        if let navigationBar = self.parentController?.navigationController?.navigationBar {
+            var newFrame = self.frame
+            newFrame.size.height = self.frame.height + navigationBar.frame.height
+            self.containerView.frame = newFrame
+        } else {
+            self.containerView.frame = self.frame
+        }
         containerView.delegate = self
         let tap = UITapGestureRecognizer(target: self, action: #selector(tappedPage))
         containerView.addGestureRecognizer(tap)
@@ -256,4 +262,17 @@ public class SwiftyOnboard: UIView, UIScrollViewDelegate {
 public enum SwiftyOnboardStyle {
     case light
     case dark
+}
+
+private extension UIView {
+    var parentController: UIViewController? {
+        var parentResponder: UIResponder? = self
+        while parentResponder != nil {
+            parentResponder = parentResponder!.next
+            if let viewController = parentResponder as? UIViewController {
+                return viewController
+            }
+        }
+        return nil
+    }
 }
