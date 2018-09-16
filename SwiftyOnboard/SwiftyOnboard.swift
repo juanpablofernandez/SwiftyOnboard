@@ -122,7 +122,11 @@ public class SwiftyOnboard: UIView, UIScrollViewDelegate {
         if let dataSource = dataSource {
             if let background = dataSource.swiftyOnboardViewForBackground(self) {
                 self.addSubview(background)
+                #if swift(>=4.2)
+                self.sendSubviewToBack(background)
+                #else
                 self.sendSubview(toBack: background)
+                #endif
             }
         }
     }
@@ -151,7 +155,11 @@ public class SwiftyOnboard: UIView, UIScrollViewDelegate {
                 overlay.page(count: self.pageCount)
                 overlay.set(style: style)
                 self.addSubview(overlay)
+                #if swift(>=4.2)
+                self.bringSubviewToFront(overlay)
+                #else
                 self.bringSubview(toFront: overlay)
+                #endif
                 let viewFrame = CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height)
                 overlay.frame = viewFrame
                 self.overlay = overlay
