@@ -122,7 +122,7 @@ public class SwiftyOnboard: UIView, UIScrollViewDelegate {
         if let dataSource = dataSource {
             if let background = dataSource.swiftyOnboardViewForBackground(self) {
                 self.addSubview(background)
-                self.sendSubview(toBack: background)
+                self.sendSubviewToBack(background)
             }
         }
     }
@@ -151,7 +151,7 @@ public class SwiftyOnboard: UIView, UIScrollViewDelegate {
                 overlay.page(count: self.pageCount)
                 overlay.set(style: style)
                 self.addSubview(overlay)
-                self.bringSubview(toFront: overlay)
+                self.bringSubviewToFront(overlay)
                 let viewFrame = CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height)
                 overlay.frame = viewFrame
                 self.overlay = overlay
@@ -160,7 +160,7 @@ public class SwiftyOnboard: UIView, UIScrollViewDelegate {
         }
     }
     
-    internal func tappedPage() {
+    @objc internal func tappedPage() {
         let currentpage = Int(getCurrentPosition())
         self.delegate?.swiftyOnboard(self, tapped: currentpage)
     }
@@ -213,7 +213,7 @@ public class SwiftyOnboard: UIView, UIScrollViewDelegate {
         }
     }
     
-    open func didTapPageControl(_ sender: Any) {
+    @objc open func didTapPageControl(_ sender: Any) {
         let pager = sender as! UIPageControl
         let page = pager.currentPage
         self.goToPage(index: page, animated: true)
