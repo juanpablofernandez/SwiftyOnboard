@@ -29,12 +29,15 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         gradient()
-        UIApplication.shared.statusBarStyle = .lightContent
         
         swiftyOnboard = SwiftyOnboard(frame: view.frame, style: .light)
         view.addSubview(swiftyOnboard)
         swiftyOnboard.dataSource = self
         swiftyOnboard.delegate = self
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
     
     func gradient() {
@@ -43,11 +46,11 @@ class ViewController: UIViewController {
         view.layer.addSublayer(gradiant)
     }
     
-    func handleSkip() {
+    @objc func handleSkip() {
         swiftyOnboard?.goToPage(index: 2, animated: true)
     }
     
-    func handleContinue(sender: UIButton) {
+    @objc func handleContinue(sender: UIButton) {
         let index = sender.tag
         swiftyOnboard?.goToPage(index: index + 1, animated: true)
     }

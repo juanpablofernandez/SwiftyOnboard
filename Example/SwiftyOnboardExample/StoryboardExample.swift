@@ -21,11 +21,11 @@ class StoryboardExampleViewController: UIViewController {
         swiftyOnboard.backgroundColor = UIColor(red: 46/256, green: 46/256, blue: 76/256, alpha: 1)
     }
     
-    func handleSkip() {
+    @objc func handleSkip() {
         swiftyOnboard?.goToPage(index: 2, animated: true)
     }
     
-    func handleContinue(sender: UIButton) {
+    @objc func handleContinue(sender: UIButton) {
         let index = sender.tag
         swiftyOnboard?.goToPage(index: index + 1, animated: true)
     }
