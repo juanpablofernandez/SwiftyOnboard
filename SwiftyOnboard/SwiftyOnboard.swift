@@ -122,7 +122,7 @@ public class SwiftyOnboard: UIView, UIScrollViewDelegate {
         if let dataSource = dataSource {
             if let background = dataSource.swiftyOnboardViewForBackground(self) {
                 self.addSubview(background)
-                self.sendSubviewToBack(background)
+                self.sendSubview(toBack: background)
             }
         }
     }
