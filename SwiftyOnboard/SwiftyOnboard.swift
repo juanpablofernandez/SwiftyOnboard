@@ -111,11 +111,12 @@ public class SwiftyOnboard: UIView, UIScrollViewDelegate {
     }
     
     fileprivate func setUpContainerView() {
-        self.addSubview(containerView)
-        self.containerView.frame = self.frame
+        let viewFrame = CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height)
+        self.containerView.frame = viewFrame
         containerView.delegate = self
         let tap = UITapGestureRecognizer(target: self, action: #selector(tappedPage))
         containerView.addGestureRecognizer(tap)
+        self.addSubview(containerView)
     }
     
     fileprivate func setBackgroundView() {
