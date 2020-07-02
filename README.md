@@ -1,3 +1,4 @@
+[![GitAds](https://images.gitads.io/SwiftyOnboard)](https://tracking.gitads.io/?repo=SwiftyOnboard)
 # SwiftyOnboard
 > A simple iOS framework that allows developers to create onboarding experiences.
 
