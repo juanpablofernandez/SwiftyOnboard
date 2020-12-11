@@ -10,7 +10,7 @@ import UIKit
 
 open class SwiftyOnboardPage: UIView {
     
-    public var title: UILabel = {
+    open var title: UILabel = {
         let label = UILabel()
         label.text = "Title"
         label.textAlignment = .center
@@ -20,7 +20,7 @@ open class SwiftyOnboardPage: UIView {
         return label
     }()
     
-    public var subTitle: UILabel = {
+    open var subTitle: UILabel = {
         let label = UILabel()
         label.text = "Sub Title"
         label.textAlignment = .center
@@ -30,7 +30,7 @@ open class SwiftyOnboardPage: UIView {
         return label
     }()
     
-    public var imageView: UIImageView = {
+    open var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         return imageView
@@ -40,12 +40,12 @@ open class SwiftyOnboardPage: UIView {
         super.init(coder: aDecoder)
     }
     
-    override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
         setUp()
     }
     
-    func set(style: SwiftyOnboardStyle) {
+    open func set(style: SwiftyOnboardStyle) {
         switch style {
         case .light:
             title.textColor = .white
@@ -56,7 +56,7 @@ open class SwiftyOnboardPage: UIView {
         }
     }
     
-    func setUp() {
+    open func setUp() {
         self.addSubview(imageView)
         
         let margin = self.layoutMarginsGuide
