@@ -81,7 +81,11 @@ public class SwiftyOnboard: UIView, UIScrollViewDelegate {
     fileprivate var pages = [SwiftyOnboardPage]()
     
     open var style: SwiftyOnboardStyle = .dark
-    open var shouldSwipe: Bool = true
+    open var shouldSwipe: Bool = true {
+        didSet {
+            containerView.isScrollEnabled = shouldSwipe
+        }
+    }
     open var fadePages: Bool = true
     
     
