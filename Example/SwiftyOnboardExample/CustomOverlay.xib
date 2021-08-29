@@ -1,11 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19158" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19141"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -23,14 +21,14 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aMw-dt-lF7">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aMw-dt-lF7">
                     <rect key="frame" x="10" y="30" width="355" height="32"/>
                     <fontDescription key="fontDescription" name="Lato-Heavy" family="Lato" pointSize="16"/>
                     <state key="normal" title="Skip">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="thy-MX-zfS">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="thy-MX-zfS">
                     <rect key="frame" x="100" y="585" width="175" height="32"/>
                     <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="16"/>
                     <state key="normal" title="Continue">
@@ -38,7 +36,7 @@
                     </state>
                 </button>
                 <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="Nzm-rP-scd">
-                    <rect key="frame" x="10" y="627" width="355" height="37"/>
+                    <rect key="frame" x="10" y="627" width="355" height="26"/>
                 </pageControl>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -54,9 +52,9 @@
                 <constraint firstItem="thy-MX-zfS" firstAttribute="leading" secondItem="qRh-M2-ev8" secondAttribute="leading" constant="100" id="e1M-W6-TiA"/>
             </constraints>
             <connections>
-                <outlet property="buttonContinue" destination="thy-MX-zfS" id="eab-t6-TUu"/>
-                <outlet property="pageControl" destination="Nzm-rP-scd" id="3Wi-oe-6Cm"/>
-                <outlet property="skip" destination="aMw-dt-lF7" id="etN-kZ-H2E"/>
+                <outlet property="buttonContinue" destination="thy-MX-zfS" id="bG8-07-rGP"/>
+                <outlet property="contentControl" destination="Nzm-rP-scd" id="yz8-37-I9s"/>
+                <outlet property="skip" destination="aMw-dt-lF7" id="QIv-uM-9JY"/>
             </connections>
             <point key="canvasLocation" x="499" y="55"/>
         </view>
