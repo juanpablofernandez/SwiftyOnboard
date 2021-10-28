@@ -1,5 +1,3 @@
-SwiftyOnboard is being sponsored by the following tool; please help to support us by taking a look and signing up to a free trial
-[![GitAds](https://images.gitads.io/SwiftyOnboard)](https://tracking.gitads.io/?repo=SwiftyOnboard)
 # SwiftyOnboard
 > A simple iOS framework that allows developers to create onboarding experiences.
 
