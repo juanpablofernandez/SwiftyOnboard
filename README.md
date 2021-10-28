@@ -184,7 +184,7 @@ I want to see your amazing onboarding. Take screenshots and/or record a gif and 
 
 Distributed under the MIT license. See ``LICENSE`` for more information.
 
-[swift-image]:https://img.shields.io/badge/swift-3.0-orange.svg
+[swift-image]:https://img.shields.io/badge/swift-5.0-orange.svg
 [swift-url]: https://swift.org/
 [license-image]: https://img.shields.io/badge/License-MIT-blue.svg
 [license-url]: LICENSE
