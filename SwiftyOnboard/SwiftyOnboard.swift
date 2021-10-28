@@ -8,7 +8,7 @@
 
 import UIKit
 
-public protocol SwiftyOnboardDataSource: class {
+public protocol SwiftyOnboardDataSource: AnyObject {
     
     func swiftyOnboardBackgroundColorFor(_ swiftyOnboard: SwiftyOnboard, atIndex index: Int) -> UIColor?
     func swiftyOnboardNumberOfPages(_ swiftyOnboard: SwiftyOnboard) -> Int
@@ -36,7 +36,7 @@ public extension SwiftyOnboardDataSource {
     }
 }
 
-public protocol SwiftyOnboardDelegate: class {
+public protocol SwiftyOnboardDelegate: AnyObject {
     
     func swiftyOnboard(_ swiftyOnboard: SwiftyOnboard, currentPage index: Int)
     func swiftyOnboard(_ swiftyOnboard: SwiftyOnboard, leftEdge position: Double)

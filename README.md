@@ -31,8 +31,8 @@ SwiftyOnboard makes it easy to add onboarding to any iOS application. SwiftyOnbo
 
 ## Requirements
 
-- iOS 9.0+
-- Xcode 7.3+
+- iOS 12.0+
+- Xcode 10.3+
 
 ## Installation
 
