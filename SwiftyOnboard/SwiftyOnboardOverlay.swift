@@ -84,8 +84,7 @@ open class SwiftyOnboardOverlay: UIView {
         continueButton.translatesAutoresizingMaskIntoConstraints = false
         continueButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
         continueButton.bottomAnchor.constraint(equalTo: pageControl.topAnchor, constant: -20).isActive = true
-        continueButton.leftAnchor.constraint(equalTo: margin.leftAnchor, constant: 10).isActive = true
-        continueButton.rightAnchor.constraint(equalTo: margin.rightAnchor, constant: -10).isActive = true
+        continueButton.centerXAnchor.constraint(equalTo: margin.centerXAnchor).isActive = true
         
         self.addSubview(skipButton)
         skipButton.translatesAutoresizingMaskIntoConstraints = false
