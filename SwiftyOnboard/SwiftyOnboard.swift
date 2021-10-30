@@ -72,6 +72,11 @@ public class SwiftyOnboard: UIView, UIScrollViewDelegate {
         scrollView.isUserInteractionEnabled = true
         scrollView.isScrollEnabled = true
         scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
+		
+		if UIApplication.shared.userInterfaceLayoutDirection == .rightToLeft {
+			scrollView.transform = CGAffineTransform(rotationAngle: .pi)
+		}
+		
         return scrollView
     }()
     
@@ -139,6 +144,11 @@ public class SwiftyOnboard: UIView, UIScrollViewDelegate {
                     var viewFrame = CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height)
                     viewFrame.origin.x = self.frame.width * CGFloat(index)
                     view.frame = viewFrame
+					
+					if UIApplication.shared.userInterfaceLayoutDirection == .rightToLeft {
+						view.transform = CGAffineTransform(rotationAngle: .pi)
+					}
+					
                     self.pages.append(view)
                 }
             }
