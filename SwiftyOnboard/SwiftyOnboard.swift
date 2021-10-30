@@ -159,6 +159,9 @@ public class SwiftyOnboard: UIView, UIScrollViewDelegate {
                 self.overlay?.pageControl.addTarget(self, action: #selector(didTapPageControl), for: .allTouchEvents)
             }
         }
+        if let overlayView = self.overlay {
+            self.dataSource?.swiftyOnboardOverlayForPosition(self, overlay: overlayView, for: 0.0)
+        }
     }
     
     @objc internal func tappedPage() {
