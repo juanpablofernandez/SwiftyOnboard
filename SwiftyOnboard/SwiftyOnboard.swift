@@ -257,4 +257,13 @@ public class SwiftyOnboard: UIView, UIScrollViewDelegate {
 public enum SwiftyOnboardStyle {
     case light
     case dark
+    case custom(color: UIColor)
+    
+    var color: UIColor {
+        switch self {
+        case .light: return UIColor.white
+        case .dark: return UIColor.black
+        case .custom(let color): return color
+        }
+    }
 }

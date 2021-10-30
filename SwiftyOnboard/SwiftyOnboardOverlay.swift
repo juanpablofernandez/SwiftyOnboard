@@ -50,16 +50,9 @@ open class SwiftyOnboardOverlay: UIView {
     }
     
     open func set(style: SwiftyOnboardStyle) {
-        switch style {
-        case .light:
-            continueButton.setTitleColor(.white, for: .normal)
-            skipButton.setTitleColor(.white, for: .normal)
-            pageControl.currentPageIndicatorTintColor = UIColor.white
-        case .dark:
-            continueButton.setTitleColor(.black, for: .normal)
-            skipButton.setTitleColor(.black, for: .normal)
-            pageControl.currentPageIndicatorTintColor = UIColor.black
-        }
+        continueButton.setTitleColor(style.color, for: .normal)
+        skipButton.setTitleColor(style.color, for: .normal)
+        pageControl.currentPageIndicatorTintColor = style.color
     }
     
     open func page(count: Int) {
