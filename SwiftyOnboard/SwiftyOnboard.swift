@@ -87,6 +87,7 @@ public class SwiftyOnboard: UIView, UIScrollViewDelegate {
     
     public init(frame: CGRect, style: SwiftyOnboardStyle = .dark) {
         super.init(frame: frame)
+        self.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         self.style = style
     }
     
