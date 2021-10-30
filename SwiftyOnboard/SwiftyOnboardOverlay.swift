@@ -31,7 +31,7 @@ open class SwiftyOnboardOverlay: UIView {
         return button
     }()
     
-    override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
         setUp()
     }
@@ -70,7 +70,7 @@ open class SwiftyOnboardOverlay: UIView {
         pageControl.currentPage = index
     }
     
-    func setUp() {
+    open func setUp() {
         self.addSubview(pageControl)
         
         let margin = self.layoutMarginsGuide
