@@ -156,7 +156,7 @@ public class SwiftyOnboard: UIView, UIScrollViewDelegate {
                 let viewFrame = CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height)
                 overlay.frame = viewFrame
                 self.overlay = overlay
-                self.overlay?.pageControl.addTarget(self, action: #selector(didTapPageControl), for: .allTouchEvents)
+                self.overlay?.pageControl.addTarget(self, action: #selector(didTapPageControl), for: .valueChanged)
             }
         }
     }

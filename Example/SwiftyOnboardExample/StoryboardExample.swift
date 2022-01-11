@@ -66,7 +66,7 @@ extension StoryboardExampleViewController: SwiftyOnboardDelegate, SwiftyOnboardD
     func swiftyOnboardOverlayForPosition(_ swiftyOnboard: SwiftyOnboard, overlay: SwiftyOnboardOverlay, for position: Double) {
         let overlay = overlay as! CustomOverlay
         let currentPage = round(position)
-        overlay.pageControl.currentPage = Int(currentPage)
+        overlay.contentControl.currentPage = Int(currentPage)
         overlay.buttonContinue.tag = Int(position)
         if currentPage == 0.0 || currentPage == 1.0 {
             overlay.buttonContinue.setTitle("Continue", for: .normal)

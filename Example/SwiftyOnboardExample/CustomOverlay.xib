@@ -55,7 +55,7 @@
             </constraints>
             <connections>
                 <outlet property="buttonContinue" destination="thy-MX-zfS" id="eab-t6-TUu"/>
-                <outlet property="pageControl" destination="Nzm-rP-scd" id="3Wi-oe-6Cm"/>
+                <outlet property="contentControl" destination="Nzm-rP-scd" id="TMv-lb-PLf"/>
                 <outlet property="skip" destination="aMw-dt-lF7" id="etN-kZ-H2E"/>
             </connections>
             <point key="canvasLocation" x="499" y="55"/>
