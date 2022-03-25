@@ -13,7 +13,7 @@ public protocol SwiftyOnboardDataSource: AnyObject {
     func swiftyOnboard(_ swiftyOnboard: SwiftyOnboard, backgroundColorAt index: Int) -> UIColor?
     func swiftyOnboardNumberOfPages(_ swiftyOnboard: SwiftyOnboard) -> Int
     func swiftyOnboardViewForBackground(_ swiftyOnboard: SwiftyOnboard) -> UIView?
-    func swiftyOnboardPageForIndex(_ swiftyOnboard: SwiftyOnboard, index: Int) -> SwiftyOnboardPage?
+    func swiftyOnboardPage(_ swiftyOnboard: SwiftyOnboard, AtIndex index: Int) -> SwiftyOnboardPage?
     func swiftyOnboardViewForOverlay(_ swiftyOnboard: SwiftyOnboard) -> SwiftyOnboardOverlay?
     func swiftyOnboard(_ swiftyOnboard: SwiftyOnboard, overlay: SwiftyOnboardOverlay, for position: Double)
     
@@ -132,7 +132,7 @@ public class SwiftyOnboard: UIView, UIScrollViewDelegate {
         if let dataSource = dataSource {
             pageCount = dataSource.swiftyOnboardNumberOfPages(self)
             for index in 0..<pageCount{
-                if let view = dataSource.swiftyOnboardPageForIndex(self, index: index) {
+                if let view = dataSource.swiftyOnboardPage(self, AtIndex: index) {
                     self.contentMode = .scaleAspectFit
                     view.set(style: style)
                     containerView.addSubview(view)
