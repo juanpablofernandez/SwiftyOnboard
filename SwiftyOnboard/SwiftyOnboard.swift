@@ -10,18 +10,18 @@ import UIKit
 
 public protocol SwiftyOnboardDataSource: AnyObject {
     
-    func swiftyOnboardBackgroundColorFor(_ swiftyOnboard: SwiftyOnboard, atIndex index: Int) -> UIColor?
+    func swiftyOnboard(_ swiftyOnboard: SwiftyOnboard, backgroundColorAt index: Int) -> UIColor?
     func swiftyOnboardNumberOfPages(_ swiftyOnboard: SwiftyOnboard) -> Int
     func swiftyOnboardViewForBackground(_ swiftyOnboard: SwiftyOnboard) -> UIView?
-    func swiftyOnboardPageForIndex(_ swiftyOnboard: SwiftyOnboard, index: Int) -> SwiftyOnboardPage?
+    func swiftyOnboardPage(_ swiftyOnboard: SwiftyOnboard, AtIndex index: Int) -> SwiftyOnboardPage?
     func swiftyOnboardViewForOverlay(_ swiftyOnboard: SwiftyOnboard) -> SwiftyOnboardOverlay?
-    func swiftyOnboardOverlayForPosition(_ swiftyOnboard: SwiftyOnboard, overlay: SwiftyOnboardOverlay, for position: Double)
+    func swiftyOnboard(_ swiftyOnboard: SwiftyOnboard, overlay: SwiftyOnboardOverlay, for position: Double)
     
 }
 
 public extension SwiftyOnboardDataSource {
     
-    func swiftyOnboardBackgroundColorFor(_ swiftyOnboard: SwiftyOnboard,atIndex index: Int)->UIColor?{
+    func swiftyOnboard(_ swiftyOnboard: SwiftyOnboard, backgroundColorAt index: Int) -> UIColor? {
         return nil
     }
     
@@ -29,7 +29,7 @@ public extension SwiftyOnboardDataSource {
         return nil
     }
     
-    func swiftyOnboardOverlayForPosition(_ swiftyOnboard: SwiftyOnboard, overlay: SwiftyOnboardOverlay, for position: Double) {}
+    func swiftyOnboard(_ swiftyOnboard: SwiftyOnboard, overlay: SwiftyOnboardOverlay, for position: Double) {}
     
     func swiftyOnboardViewForOverlay(_ swiftyOnboard: SwiftyOnboard) -> SwiftyOnboardOverlay? {
         return SwiftyOnboardOverlay()
@@ -40,21 +40,21 @@ public protocol SwiftyOnboardDelegate: AnyObject {
     
     func swiftyOnboard(_ swiftyOnboard: SwiftyOnboard, currentPage index: Int)
     func swiftyOnboard(_ swiftyOnboard: SwiftyOnboard, leftEdge position: Double)
-    func swiftyOnboard(_ swiftyOnboard: SwiftyOnboard, tapped index: Int)
+    func swiftyOnboard(_ swiftyOnboard: SwiftyOnboard, tappedAt index: Int)
     
 }
 
 public extension SwiftyOnboardDelegate {
     func swiftyOnboard(_ swiftyOnboard: SwiftyOnboard, currentPage index: Int) {}
     func swiftyOnboard(_ swiftyOnboard: SwiftyOnboard, leftEdge position: Double) {}
-    func swiftyOnboard(_ swiftyOnboard: SwiftyOnboard, tapped index: Int) {}
+    func swiftyOnboard(_ swiftyOnboard: SwiftyOnboard, tappedAt index: Int) {}
 }
 
 public class SwiftyOnboard: UIView, UIScrollViewDelegate {
     
     open weak var dataSource: SwiftyOnboardDataSource? {
         didSet {
-            if let color = dataSource?.swiftyOnboardBackgroundColorFor(self, atIndex: 0){
+            if let color = dataSource?.swiftyOnboard(self, backgroundColorAt: 0) {
                 backgroundColor = color
             }
             dataSourceSet = true
@@ -132,7 +132,7 @@ public class SwiftyOnboard: UIView, UIScrollViewDelegate {
         if let dataSource = dataSource {
             pageCount = dataSource.swiftyOnboardNumberOfPages(self)
             for index in 0..<pageCount{
-                if let view = dataSource.swiftyOnboardPageForIndex(self, index: index) {
+                if let view = dataSource.swiftyOnboardPage(self, AtIndex: index) {
                     self.contentMode = .scaleAspectFit
                     view.set(style: style)
                     containerView.addSubview(view)
@@ -163,7 +163,7 @@ public class SwiftyOnboard: UIView, UIScrollViewDelegate {
     
     @objc internal func tappedPage() {
         let currentpage = Int(getCurrentPosition())
-        self.delegate?.swiftyOnboard(self, tapped: currentpage)
+        self.delegate?.swiftyOnboard(self, tappedAt: currentpage)
     }
     
     fileprivate func getCurrentPosition() -> CGFloat {
@@ -179,8 +179,8 @@ public class SwiftyOnboard: UIView, UIScrollViewDelegate {
         let currentIndex = Int(pos - percentage)
         
         if currentIndex < pageCount - 1{
-            let color1 = dataSource?.swiftyOnboardBackgroundColorFor(self, atIndex: currentIndex)
-            let color2 = dataSource?.swiftyOnboardBackgroundColorFor(self, atIndex: currentIndex + 1)
+            let color1 = dataSource?.swiftyOnboard(self, backgroundColorAt: currentIndex)
+            let color2 = dataSource?.swiftyOnboard(self, backgroundColorAt: currentIndex + 1)
             
             if let color1 = color1,
                 let color2 = color2{
@@ -238,7 +238,7 @@ public class SwiftyOnboard: UIView, UIScrollViewDelegate {
         
         self.delegate?.swiftyOnboard(self, leftEdge: currentPosition)
         if let overlayView = self.overlay {
-            self.dataSource?.swiftyOnboardOverlayForPosition(self, overlay: overlayView, for: currentPosition)
+            self.dataSource?.swiftyOnboard(self, overlay: overlayView, for: currentPosition)
         }
         
         if let color = colorForPosition(CGFloat(currentPosition)) {
